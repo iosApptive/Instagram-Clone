@@ -1,0 +1,5 @@
+Image(.boston)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 90, height: 90)
+                                .clipShape(Circle())
