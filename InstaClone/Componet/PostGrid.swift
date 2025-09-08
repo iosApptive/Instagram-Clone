@@ -1,0 +1,6 @@
+Image(.boston)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 150)
+                            .frame(width: UIScreen.main.bounds.width / 3 - 1)
+                            .clipped()
