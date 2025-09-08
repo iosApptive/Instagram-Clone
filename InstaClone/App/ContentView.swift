@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Int = 0
+    @State private var selection: Int = 3
+    @State private var isPosting: Bool = false
+    
     var body: some View {
-        TabView {
+        TabView(selection:$selection) {
             HomeView()
                 .tag(0)
                 .tabItem {
@@ -35,11 +37,19 @@ struct ContentView: View {
                     Label("", systemImage: "play.square")
                 }
             
-            HomeView()
+            ProfileView()
                 .tag(4)
                 .tabItem {
                     Label("", systemImage: "person")
                 }
+        }
+        .onChange(of:selection) { _, newValue in
+            if newValue == 2 {
+                isPosting.toggle()
+            }
+        }
+        .fullScreenCover(isPresented: $isPosting) {
+            AddPostView()
         }
 
     }

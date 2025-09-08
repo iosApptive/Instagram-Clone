@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct NavHeaderView: View {
+    let imageName: String?
+    let iconLeft: String?
+    let iconRight: String?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            if let imageName {
+                Text(imageName)
+                    .fontWeight(.semibold)
+            } else {
+                Image(.instagram)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 60)
+            }
+            
+            Spacer()
+            HStack(spacing:16) {
+                Image(systemName: iconLeft ?? "")
+                Image(systemName: iconRight ?? "")
+            }
+        }
+        .font(.title)
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    NavHeaderView()
+    NavHeaderView(imageName: "instagram", iconLeft: "heart", iconRight: "paperplane")
 }
